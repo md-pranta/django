@@ -28,5 +28,11 @@
     <h1>{{name | upper}}</h1>
     <h1>{{name | wordcount}}</h1>
     <h1>{{name | truncatechars:5}}</h1>
+
+    {% for i in li %}
+    <p>{{i}}</p>
+    {% endfor %} {% for d in data|dictsort:"name" %}
+    <p>name:{{d.name}} age:{{d.age}}</p>
+    {% endfor %}
   </body>
 </html>
