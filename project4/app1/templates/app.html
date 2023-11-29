@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% load static %} {% block content%}
+
+<h1>{{ id.name }}</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">Id</th>
+      <th scope="col">title</th>
+      <th scope="col">Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for val in data %}
+    <tr>
+      <th scope="row">{{val.userId}}</th>
+      <td>{{val.id}}</td>
+      <td>{{val.title}}</td>
+      <td>{{val.body}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h1>this is app1 section</h1>
+<img src="{% static 'img/img2.jpeg'%}" alt="img2" />
+{% endblock content%}
