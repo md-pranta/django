@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<table class="table caption-top">
+  <caption>
+    List of Album:
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col-1">id</th>
+      <th scope="col-2">Musician Name</th>
+      <th scope="col-2">Email</th>
+      <th scope="col-1">Album Rating</th>
+      <th scope="col-2">Instrument type</th>
+      <th scope="col-1">Album Name</th>
+      <th scope="col-1">Release Date</th>
+      <th scope="col-2">Action</th>
+    </tr>
+  </thead>
+  {% for post in album %}
+  <tbody>
+    <tr scope="row">
+      <th scope="row">{{post.id}}</th>
+      <td>
+        <a
+          href="{% url 'edit_musician' post.musician.id%}"
+          style="text-decoration: none"
+          >{{post.musician.first_name}}</a
+        >
+      </td>
+      <td>{{post.musician.email}}</td>
+
+      <td>{{post.rating}}</td>
+      <td>{{post.musician.ins}}</td>
+      <td>{{post.album_name}}</td>
+      <td>{{post.release}}</td>
+      <td>
+        <a href="{% url 'edit' post.id%}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'delete' post.id%}" class="btn btn-danger">delete</a>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock content %}
