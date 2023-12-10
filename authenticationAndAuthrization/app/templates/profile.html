@@ -1,0 +1,28 @@
+<!-- prettier-ignore -->
+{% extends "base.html" %}
+{% load crispy_forms_tags%}
+{% block body %}
+
+<h1>profile Page</h1>
+{% for msg in messages %}
+<p class="bg-success m-3 test-white" >{{msg}}</p>
+{% endfor %}
+<br>
+<a href="{% url 'passchange'%}"class="btn btn-info">change your password</a>
+<a href="{% url 'passchange2'%}"class="btn btn-warning">password forget</a></p>
+<form action="" method="post" style="width: 50%; margin: auto" novalidate>
+    <h1> Hello {{user}}</h1>
+    {% csrf_token %}
+    {% for error in form.non_field_errors %}
+    <p class = "bg-danger text-white">{{error}}</p>
+    {% endfor %}
+    <!-- {{form | crispy}} -->
+    {% for field in form %} {{field.label_tag}} {{field}}
+    {{field.errors|striptags}} {%endfor %}
+
+  </br>
+    <button class="btn btn-warning">change data</button>
+  </form>
+
+
+ {% endblock body %}

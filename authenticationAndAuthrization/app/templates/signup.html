@@ -1,0 +1,18 @@
+<!-- prettier-ignore -->
+{% extends "base.html" %} {% load crispy_forms_tags%} {% block body %} {% for msg in messages %}
+<small {% if msg.tags%}class="{{msg.tags}}" {% endif %}>{{msg}}</small>
+{% endfor %}
+
+<form action="" method="post" style="width: 50%; margin: auto" novalidate>
+  <h1>signup page</h1>
+  {% csrf_token %}
+  <!-- {{form | crispy}} -->
+  {% for field in form %} {{field.label_tag}} {{field}}
+  {{field.errors|striptags}} {%endfor %}
+</br>
+  <button class="btn btn-primary">submit</button>
+</br>
+<small>already have an account:<a href="{% url 'login'%}">login</a></small>
+</form>
+
+{% endblock body %}
