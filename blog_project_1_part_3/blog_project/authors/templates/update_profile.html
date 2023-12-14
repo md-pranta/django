@@ -1,0 +1,15 @@
+<!-- prettier-ignore -->
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<form style="width: 50%; margin: auto" method="post">
+  {% csrf_token %}
+  <h1>profile Page</h1>
+  <a class="btn btn-warning btn-sm" href="{% url 'password'%}"
+    >change your password</a
+  >
+  {{ form | crispy}}
+  <button type="submit" class="btn btn-primary mb-4">submit</button>
+</form>
+{% endblock content %}
