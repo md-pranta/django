@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container bg-black">
+  <h1 style="text-align: center; color: white">change password</h1>
+  <form method="post" novalidate>
+    <!-- prettier-ignore -->
+    {% csrf_token %} {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class="bg-danger text-white p-3">{{error}}</p>
+    {% endfor %} {% endif %}
+    <div style="text-align: center">
+      {% for fm in form %}
+      <p style="color: white">{{fm.label_tag}}</p>
+      {{fm}}
+      <p class="text-danger">{{fm.errors | striptags}}</p>
+      <br />
+      {% endfor %}
+      <br />
+      <button
+        type="submit"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border rounded-md border-gray-500 focus:outline-none focus:shadow-outlin"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}
